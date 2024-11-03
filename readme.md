@@ -18,7 +18,7 @@
  - cat ~/.ssh/id_rsa.pub
  check ssh:
  - ssh -T git@github.com
-pass: 4270107
+pass: XXXXXX
 --------------------------------
 4. Add git
 - git remote add origin https://github.com/shivaUlttramarine/cooking_app_langchain.git
