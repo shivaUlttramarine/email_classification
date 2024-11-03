@@ -1,5 +1,7 @@
 openaikey.txt
 .conda/
+./readme_private.md
+
 *.pem
 *.pyc
 *.png 

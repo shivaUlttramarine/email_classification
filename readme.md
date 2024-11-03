@@ -60,8 +60,8 @@ run docker with openai key
 --- configute cli aws:
 aws configure
 add this cases:
-AWS Access Key ID [None]: AKIAS2HWA7MHGUAKVFZC
-AWS Secret Access Key [None]: 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
+AWS Access Key ID [None]: xxxxxxxxxx
+AWS Secret Access Key [None]: xxxxxxxxxxxxxxxxxxxxxxx
 Default region name [None]: eu-central-1
 Default output format [None]: json
 verify configuration:
