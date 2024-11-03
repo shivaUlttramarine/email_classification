@@ -1,0 +1,5 @@
+openaikey.txt
+.conda/
+*.pem
+*.pyc
+*.png 

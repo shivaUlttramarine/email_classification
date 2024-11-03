@@ -1,0 +1,17 @@
+name: env_email
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+  - ipykernel
+  - pip
+  - pip:
+    - flask
+    - tensorflow
+    - pandas
+    - matplotlib
+    - seaborn
+
+
+
+
