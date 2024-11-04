@@ -15,11 +15,12 @@ RUN conda env create -f requirements.yml
 
 # Make port 5000 available to the world outside this container
 EXPOSE 5000
+EXPOSE 80
 
 # Set environment variables
 ENV FLASK_APP=app.py
 ENV PATH=/opt/conda/envs/env_email/bin:$PATH 
 
 # Run the application using the conda environment
-CMD ["conda", "run", "--no-capture-output", "-n", "env_email", "flask", "run", "--host=0.0.0.0"]
+CMD ["conda", "run", "--no-capture-output", "-n", "env_email", "flask", "run", "--host=0.0.0.0", "--port=5000"]
  
