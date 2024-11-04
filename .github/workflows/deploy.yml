@@ -37,6 +37,6 @@ jobs:
 
       - name: Pushing the Image
         run: |
-          docker push 193789491982.dkr.ecr.eu-central-1.amazonaws.com/email_classification:latest
+          docker push 193789491982.dkr.ecr.eu-central-1.amazonaws.com/email:latest
 
          
