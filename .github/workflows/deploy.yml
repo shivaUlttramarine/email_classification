@@ -42,4 +42,4 @@ jobs:
          
       - name: Deploy Image to Amazon ECS
         run: |
-          aws ecs update-service --cluster email_classification2 --service email_classification_service --force-new-deployment
+          aws ecs update-service --cluster email --service email_service --force-new-deployment
