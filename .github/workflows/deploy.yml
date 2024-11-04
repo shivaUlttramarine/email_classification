@@ -25,19 +25,19 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: eu-central-1
 
-      - name: Logging in to Amazon ECR...
-        run: |
-          aws ecr get-login-password --region eu-central-1 | docker login --username AWS --password-stdin 193789491982.dkr.ecr.eu-central-1.amazonaws.com
+      # - name: Logging in to Amazon ECR...
+      #   run: |
+      #     aws ecr get-login-password --region eu-central-1 | docker login --username AWS --password-stdin 193789491982.dkr.ecr.eu-central-1.amazonaws.com
 
-      - name: Building the Docker image
-        run: |
-          docker build -t email_classification .
-          docker tag email_classification:latest 193789491982.dkr.ecr.eu-central-1.amazonaws.com/email:latest
+      # - name: Building the Docker image
+      #   run: |
+      #     docker build -t email_classification .
+      #     docker tag email_classification:latest 193789491982.dkr.ecr.eu-central-1.amazonaws.com/email:latest
 
 
-      - name: Pushing the Image
-        run: |
-          docker push 193789491982.dkr.ecr.eu-central-1.amazonaws.com/email:latest
+      # - name: Pushing the Image
+      #   run: |
+      #     docker push 193789491982.dkr.ecr.eu-central-1.amazonaws.com/email:latest
 
          
       - name: Deploy Image to Amazon ECS
