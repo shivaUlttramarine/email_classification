@@ -5,6 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flask App with Tabs</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        /* Optional styling for table */
+        table.data {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table.data, table.data th, table.data td {
+            border: 1px solid black;
+            padding: 8px;
+        }
+        table.data th {
+            background-color: #f2f2f2;
+        }
+    </style>
 </head>
 <body>
     <nav>

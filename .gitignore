@@ -1,1 +1,9 @@
 readme_private.md
+openaikey.txt
+.conda/
+./readme_private.md
+
+*.pem
+*.pyc
+*.png 
+

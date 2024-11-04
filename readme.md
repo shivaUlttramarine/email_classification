@@ -18,7 +18,7 @@
  - cat ~/.ssh/id_rsa.pub
  check ssh:
  - ssh -T git@github.com
-pass: 4270107
+pass: XXXXX
 --------------------------------
 4. Add git
 - git remote add origin https://github.com/shivaUlttramarine/cooking_app_langchain.git
@@ -28,6 +28,19 @@ pass: 4270107
 - git push --set-upstream origin master
 - git push -u origin main
 - git push origin main
+
+--------------------------------
+4.0. Add variables to git secret:
+- Click on Settings > Secrets and variables > Actions > New repository secret.
+- add AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY
+
+to run the code on your local, with no change on the code:
+- export AWS_ACCESS_KEY_ID='your_access_key'
+- export AWS_SECRET_ACCESS_KEY='your_secret_key'
+
+
+
+
 
 5. dockerize:----------------------------------------
 create .dockerignore
