@@ -49,8 +49,8 @@ jobs:
           EC2_USER: "ec2-user"
           EC2_HOST: ${{ secrets.EC2_PUBLIC_IP }}     # EC2 instance public IP, stored in GitHub Secrets
           EC2_KEY: ${{ secrets.EC2_SSH_KEY }}        # SSH private key, stored in GitHub Secrets
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_ACCESS_KEY_ID_var: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY_var: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_REGION: "eu-central-1" 
         run: |
           echo "$EC2_KEY" > ./ec2_key.pem
@@ -59,8 +59,8 @@ jobs:
           ssh -o StrictHostKeyChecking=no -i "./ec2_key.pem" $EC2_USER@$EC2_HOST << EOF
 
           echo "Exporting  Environment Vaeriables"
-          export AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }}
-          export AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID_var
+          export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY_var
           export AWS_REGION=eu-central-1          
 
           echo "Loging in to  ECR..."
