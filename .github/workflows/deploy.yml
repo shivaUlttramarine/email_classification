@@ -52,11 +52,16 @@ jobs:
         run: |
           echo "$EC2_KEY" > ./ec2_key.pem
           chmod 600 ./ec2_key.pem
+          echo "ssh t0 EC2.."
           ssh -o StrictHostKeyChecking=no -i "./ec2_key.pem" $EC2_USER@$EC2_HOST << EOF
+          echo "Loging in to  ECR"
           aws ecr get-login-password --region eu-central-1 | docker login --username AWS --password-stdin 193789491982.dkr.ecr.eu-central-1.amazonaws.com
+          echo "puuling Docker...."
           docker pull 193789491982.dkr.ecr.eu-central-1.amazonaws.com/email:latest
           # Stop and remove any existing container
+          echo "Removing old docker images.."
           docker rm -f email_classification || true
+          echo "Runing docker.."
           docker run -d -p 80:80 --name email_classification 193789491982.dkr.ecr.eu-central-1.amazonaws.com/email:latest
 
           EOF
