@@ -71,6 +71,6 @@ jobs:
           docker rm -f email_classification || true
           echo "Runing docker.."
           # docker run -d -p 80:80 --name email_classification 193789491982.dkr.ecr.eu-central-1.amazonaws.com/email:latest
-          docker run -d -p 80:80 --name email_classification -e AWS_ACCESS_KEY_ID='1234' -e AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }} 193789491982.dkr.ecr.eu-central-1.amazonaws.com/email:latest
+          docker run -d -p 80:80 --name email_classification -e AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }} -e AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }} 193789491982.dkr.ecr.eu-central-1.amazonaws.com/email:latest
           echo "Runing docker was succcesful..."
           EOF
