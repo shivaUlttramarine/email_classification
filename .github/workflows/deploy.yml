@@ -50,5 +50,9 @@ jobs:
           EC2_HOST: ${{ secrets.EC2_PUBLIC_IP }}     # EC2 instance public IP, stored in GitHub Secrets
           EC2_KEY: ${{ secrets.EC2_SSH_KEY }}        # SSH private key, stored in GitHub Secrets
         run: |
+          echo "$EC2_KEY" > ./ec2_key.pem
+          chmod 600 ./ec2_key.pem
+          ssh -o StrictHostKeyChecking=no -i "./ec2_key.pem" $EC2_USER@$EC2_HOST << EOF
+          EOF
           # Connect to EC2 instance via SSH
-          ssh -o StrictHostKeyChecking=no -i "$EC2_KEY" $EC2_USER@$EC2_HOST << EOF
+          # ssh -o StrictHostKeyChecking=no -i "$EC2_KEY" $EC2_USER@$EC2_HOST << EOF
