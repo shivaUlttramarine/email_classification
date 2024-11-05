@@ -49,11 +49,25 @@ jobs:
           EC2_USER: "ec2-user"
           EC2_HOST: ${{ secrets.EC2_PUBLIC_IP }}     # EC2 instance public IP, stored in GitHub Secrets
           EC2_KEY: ${{ secrets.EC2_SSH_KEY }}        # SSH private key, stored in GitHub Secrets
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: "eu-central-1" 
         run: |
           echo "$EC2_KEY" > ./ec2_key.pem
           chmod 600 ./ec2_key.pem
           echo "ssh t0 EC2.."
           ssh -o StrictHostKeyChecking=no -i "./ec2_key.pem" $EC2_USER@$EC2_HOST << EOF
+
+          echo "Exporting  Environment Vaeriables"
+          export AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }}
+          export AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          export AWS_REGION=eu-central-1
+          
+          # echo "Add ssh-keygen to Linux ..."
+          # ssh-keygen -t rsa -b 4096 -C "shiva.ghandi.bi.1992@gmail.com"
+          # cd .ssh
+          # ssh-copy-id -i id_rsa.pub
+
           echo "Loging in to  ECR..."
           aws ecr get-login-password --region eu-central-1 | docker login --username AWS --password-stdin 193789491982.dkr.ecr.eu-central-1.amazonaws.com
           echo "pulling Docker...."
